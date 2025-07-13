@@ -1,4 +1,8 @@
 import { MCPClient } from "@mastra/mcp";
+import path from "path";
+
+const noteDirectory = process.env.NOTES_DIRECTORY || "";
+console.log({noteDirectory});
 
 const mcp = new MCPClient({
   servers: {
@@ -11,6 +15,13 @@ const mcp = new MCPClient({
     hackernews: {
       command: "npx",
       args: ["-y", "@devabdultech/hn-mcp-server"],
+    },
+    textEditor: {
+      command: "pnpx",
+      args: [
+        "@modelcontextprotocol/server-filesystem",
+        noteDirectory,
+      ],
     },
   },
 });

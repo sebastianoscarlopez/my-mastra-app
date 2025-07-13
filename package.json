@@ -25,6 +25,7 @@
     "@mastra/loggers": "^0.10.3",
     "@mastra/mcp": "^0.10.6",
     "@mastra/memory": "^0.11.2",
+    "@modelcontextprotocol/server-filesystem": "^2025.7.1",
     "zod": "^3.25.76"
   },
   "devDependencies": {
