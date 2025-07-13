@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "mastra": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mastra/mcp-docs-server"
+      ]
+    },
+    "local-mcp": {
+      "url": "http://localhost:4111/api",
+      "transport": "http"
+    }
+  }
+}
