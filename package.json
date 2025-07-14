@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.13",
+    "@types/react": "^19.1.8",
     "mastra": "^0.10.12",
     "typescript": "^5.8.3"
   },
