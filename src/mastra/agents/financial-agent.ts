@@ -3,8 +3,9 @@ import { dlocalLlmProxy } from "./dlocal-llm-proxy";
 import { getTransactionsTool } from "../tools/get-transactions-tool";
 import { calculatorTool } from "../tools/calculator-tool";
 import { Memory } from "@mastra/memory";
-import { LibSQLStore } from "@mastra/libsql";
+import { LibSQLStore, LibSQLVector } from "@mastra/libsql";
 import { initializeMCPTools } from "./mcp-config";
+import { fastembed } from "@mastra/fastembed";
 
 // Create an async function to initialize the agent with MCP tools
 export const createFinancialAgent = async () => {
@@ -100,6 +101,10 @@ export const createFinancialAgent = async () => {
       storage: new LibSQLStore({
         url: 'file:./financial.db', // path is relative to the .mastra/output directory
       }),
+      vector: new LibSQLVector({
+        connectionUrl: 'file:./financial.db',
+      }),
+      embedder: fastembed,
     }),
   });
 };
