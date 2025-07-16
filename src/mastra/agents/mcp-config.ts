@@ -1,29 +1,38 @@
 import { MCPClient } from "@mastra/mcp";
-import path from "path";
 
 const noteDirectory = process.env.NOTES_DIRECTORY || "";
-console.log({noteDirectory});
+
+// Prepare servers configuration
+const servers: Record<string, any> = {
+  hackernews: {
+    command: "npx",
+    args: ["-y", "@devabdultech/hn-mcp-server"],
+  },
+  textEditor: {
+    command: "pnpx",
+    args: [
+      "@modelcontextprotocol/server-filesystem",
+      noteDirectory,
+    ],
+  },
+};
+
+// Only add Zapier if URL is 
+if (process.env.ZAPIER_MCP_URL) {
+  servers.zapier = {
+    url: new URL(process.env.ZAPIER_MCP_URL),
+  };
+}
+
+// Only add GitHub if URL is configured
+if (process.env.COMPOSIO_MCP_GITHUB) {
+  servers.github = {
+    url: new URL(process.env.COMPOSIO_MCP_GITHUB),
+  };
+}
 
 const mcp = new MCPClient({
-  servers: {
-    zapier: {
-      url: new URL(process.env.ZAPIER_MCP_URL || ""),
-    },
-    github: {
-      url: new URL(process.env.COMPOSIO_MCP_GITHUB || ""),
-    },
-    hackernews: {
-      command: "npx",
-      args: ["-y", "@devabdultech/hn-mcp-server"],
-    },
-    textEditor: {
-      command: "pnpx",
-      args: [
-        "@modelcontextprotocol/server-filesystem",
-        noteDirectory,
-      ],
-    },
-  },
+  servers,
 });
 
 // Initialize MCP tools
