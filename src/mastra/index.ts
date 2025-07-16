@@ -11,16 +11,17 @@ import { weatherAgent } from './agents/weather-agent';
 import { financialAgent } from './agents/financial-agent';
 import { memoryMasterAgent } from './agents/memory-agent';
 import { learningAssistantAgent } from './agents/learning-assistant';
+import { contentAgent } from "./agents/content-agent";
 
 export const mastra = new Mastra({
-  workflows: { 
-    weatherWorkflow, 
-    simpleWorkflow, 
-    parallelWorkflow, 
+  workflows: {
+    weatherWorkflow,
+    simpleWorkflow,
+    parallelWorkflow,
     conditionalWorkflow,
-    contentWorkflow 
+    contentWorkflow,
   },
-  agents: { weatherAgent, financialAgent, memoryMasterAgent, learningAssistantAgent },
+  agents: { weatherAgent, financialAgent, memoryMasterAgent, learningAssistantAgent, contentAgent },
   storage: new LibSQLStore({
     // stores telemetry, evals, ... into memory storage, if it needs to persist, change to file:../mastra.db
     url: ":memory:",
