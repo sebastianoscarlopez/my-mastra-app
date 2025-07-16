@@ -55,8 +55,8 @@ const memory = new Memory({
 });
 
 // Create an agent with memory
-export const memoryAgent = new Agent({
-  name: "MemoryAgent",
+export const memoryMasterAgent = new Agent({
+  name: "MemoryMasterAgent",
   instructions: `
     You are a helpful assistant with advanced memory capabilities.
     You can remember previous conversations and user preferences.
