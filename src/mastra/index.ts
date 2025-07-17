@@ -6,7 +6,7 @@ import { weatherWorkflow } from './workflows/weather-workflow';
 import { simpleWorkflow } from './workflows/simple-workflow';
 import { parallelWorkflow } from './workflows/parallel-workflow';
 import { conditionalWorkflow } from './workflows/conditional-workflow';
-import { contentWorkflow } from './workflows/content-workflow';
+import { contentWorkflow, parallelAnalysisWorkflow, combinedAnalysisWorkflow } from './workflows/content-workflow';
 import { weatherAgent } from './agents/weather-agent';
 import { financialAgent } from './agents/financial-agent';
 import { memoryMasterAgent } from './agents/memory-agent';
@@ -20,6 +20,8 @@ export const mastra = new Mastra({
     parallelWorkflow,
     conditionalWorkflow,
     contentWorkflow,
+    parallelAnalysisWorkflow,
+    combinedAnalysisWorkflow,
   },
   agents: { weatherAgent, financialAgent, memoryMasterAgent, learningAssistantAgent, contentAgent },
   storage: new LibSQLStore({
